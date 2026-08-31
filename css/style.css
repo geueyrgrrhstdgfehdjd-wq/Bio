@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: #0f172a;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* Avatar & Discord Frames Animation */
+.avatar-wrapper {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.avatar-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 1. Cyber Neon Frame */
+.frame-cyber-neon {
+  box-shadow: 0 0 20px #22d3ee;
+  border: 4px solid #22d3ee;
+  animation: pulse-neon 2s infinite alternate;
+}
+@keyframes pulse-neon {
+  0% { box-shadow: 0 0 10px #22d3ee; }
+  100% { box-shadow: 0 0 25px #06b6d4; }
+}
+
+/* 2. Fire Aura Frame */
+.frame-fire-god {
+  border: 4px solid #f97316;
+  animation: bounce-fire 1.5s infinite alternate;
+  box-shadow: 0 0 20px #f97316;
+}
+@keyframes bounce-fire {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-6px); box-shadow: 0 0 30px #ea580c; }
+}
+
+/* 3. Magic Galaxy Frame */
+.frame-magic-ring {
+  border: 4px dashed #a855f7;
+  animation: spin-magic 10s linear infinite;
+  box-shadow: 0 0 20px #a855f7;
+}
+@keyframes spin-magic {
+  100% { transform: rotate(360deg); }
+}
+
+/* Badge ยศ */
+.badge-tag {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2563eb;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+/* Link Buttons 3D */
+.links-container {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.link-btn {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.link-btn:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.link-btn img {
+  width: 36px;
+  height: 36px;
+  margin-right: 12px;
+}
