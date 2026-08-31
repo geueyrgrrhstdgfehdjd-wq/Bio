@@ -1,114 +1,248 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
 
-* {
-  box-sizing: border-box;
-  margin: 0;
+.dashboard-body {
   padding: 0;
-  font-family: 'Inter', sans-serif;
+  margin: 0;
+  background-color: #030712;
+  color: #f8fafc;
+  overflow: hidden;
+  height: 100vh;
 }
 
-body {
-  background-color: #0f172a;
-  color: #ffffff;
-  min-height: 100vh;
+.dashboard-layout {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* 1. Sidebar 3D Glass Layer */
+.sidebar {
+  width: 280px;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 24px 16px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 40px 20px;
 }
 
-/* Avatar & Discord Frames Animation */
-.avatar-wrapper {
-  position: relative;
+.sidebar-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(168, 85, 247, 0.15));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+.sidebar-title h2 {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+}
+
+/* ปุ่มเมนูเอฟเฟกต์ 3D Hover */
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #94a3b8;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.menu-item.active {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+}
+
+.menu-item svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* 2. Content Area (พื้นที่กรอกข้อมูลแบบประณีต) */
+.content-area {
+  flex: 1;
+  padding: 40px 48px;
+  overflow-y: auto;
+  background: radial-gradient(circle at top left, rgba(30, 41, 59, 0.3), transparent 50%);
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 36px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.content-header h2 {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+/* ปุ่มดูหน้าจริงแบบ 3D Press Button */
+.view-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(145deg, #059669, #047857);
+  color: white;
+  padding: 12px 22px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 6px 0 #064e3b, 0 10px 20px rgba(5, 150, 105, 0.3);
+  transition: all 0.15s ease;
+}
+
+.view-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #064e3b, 0 4px 10px rgba(5, 150, 105, 0.3);
+}
+
+/* Form Styles */
+.form-card {
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 28px;
+  max-width: 640px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.form-group {
   margin-bottom: 24px;
 }
 
-.avatar-img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
+.form-group label {
   display: block;
-}
-
-/* 1. Cyber Neon Frame */
-.frame-cyber-neon {
-  box-shadow: 0 0 20px #22d3ee;
-  border: 4px solid #22d3ee;
-  animation: pulse-neon 2s infinite alternate;
-}
-@keyframes pulse-neon {
-  0% { box-shadow: 0 0 10px #22d3ee; }
-  100% { box-shadow: 0 0 25px #06b6d4; }
-}
-
-/* 2. Fire Aura Frame */
-.frame-fire-god {
-  border: 4px solid #f97316;
-  animation: bounce-fire 1.5s infinite alternate;
-  box-shadow: 0 0 20px #f97316;
-}
-@keyframes bounce-fire {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-6px); box-shadow: 0 0 30px #ea580c; }
-}
-
-/* 3. Magic Galaxy Frame */
-.frame-magic-ring {
-  border: 4px dashed #a855f7;
-  animation: spin-magic 10s linear infinite;
-  box-shadow: 0 0 20px #a855f7;
-}
-@keyframes spin-magic {
-  100% { transform: rotate(360deg); }
-}
-
-/* Badge ยศ */
-.badge-tag {
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #2563eb;
-  color: #fff;
-  font-size: 10px;
-  font-weight: 800;
-  padding: 2px 10px;
-  border-radius: 20px;
-  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  color: #cbd5e1;
   text-transform: uppercase;
 }
 
-/* Link Buttons 3D */
-.links-container {
+.form-group input, .form-group textarea {
   width: 100%;
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 20px;
-}
-
-.link-btn {
-  display: flex;
-  align-items: center;
-  padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.05);
+  padding: 14px 18px;
+  background: rgba(30, 41, 59, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
+  border-radius: 14px;
   color: white;
-  text-decoration: none;
-  font-weight: 600;
+  font-size: 15px;
+  outline: none;
   transition: all 0.2s ease;
 }
 
-.link-btn:hover {
-  transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.15);
+.form-group input:focus, .form-group textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+  background: rgba(30, 41, 59, 0.9);
 }
 
-.link-btn img {
-  width: 36px;
-  height: 36px;
-  margin-right: 12px;
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Frame Selector Cards */
+.frame-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.frame-select-card {
+  background: rgba(30, 41, 59, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 20px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.frame-select-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+.frame-select-card.active {
+  border-color: #2563eb;
+  background: rgba(37, 99, 235, 0.1);
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.25);
+}
+
+/* 3. Live Preview Side Panel */
+.preview-area {
+  width: 440px;
+  background: rgba(3, 7, 18, 0.9);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  perspective: 1000px;
+}
+
+.preview-title {
+  position: absolute;
+  top: 24px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+/* กรอบเครื่องมือถือจำลอง 3D Mockup */
+.phone-mockup {
+  width: 330px;
+  height: 640px;
+  border: 10px solid #1e293b;
+  border-radius: 44px;
+  background: #090d16;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 20px 20px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.05);
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease-out;
 }
